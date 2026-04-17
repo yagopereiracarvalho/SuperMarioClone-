@@ -5,11 +5,15 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
 
-[Header("movimento")]
-[SerializeField] float moveSpeed;
-[SerializeField] float direction;
+    [Header("movimento")]
+    [SerializeField] float moveSpeed;
+    [SerializeField] float direction;
 
-Rigidbody2D rig;
+    [Header("Pulo")]
+    [SerializeField] float jumpForce = 13;
+    [SerializeField] float jumpingCutMultiplier = 0.05f;
+
+    Rigidbody2D rig;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -20,6 +24,7 @@ Rigidbody2D rig;
     void Update()
     {
         GetDirection();
+        Jump();
     }
     void FixedUpdate()
     {
@@ -40,6 +45,24 @@ Rigidbody2D rig;
         if(direction < 0)
         {
             transform.eulerAngles = new Vector2(0, 180);
+        }
+    }
+    void Jump()
+    {
+        if (InputManager.Instance.JumpPressed)
+        {
+            rig.linearVelocity = new Vector2(rig.linearVelocity.x,jumpForce);
+            
+            InputManager.Instance.JumpReleased = false;
+            InputManager.Instance.JumpPressed = false;
+        }
+        if (InputManager.Instance.JumpReleased)
+        {
+            if (rig.linearVelocity.y > 0)
+            {
+                rig.linearVelocity = new Vector2(rig.linearVelocity.x,rig.linearVelocity.y * jumpingCutMultiplier);
+            }
+            InputManager.Instance.JumpReleased = false;
         }
     }
 }
