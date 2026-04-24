@@ -49,20 +49,20 @@ public class PlayerController : MonoBehaviour
     }
     void Jump()
     {
-        if (InputManager.Instance.JumpPressed)
+        if (InputManager.instance.JumpPressed)
         {
             rig.linearVelocity = new Vector2(rig.linearVelocity.x,jumpForce);
             
-            InputManager.Instance.JumpReleased = false;
-            InputManager.Instance.JumpPressed = false;
+            InputManager.instance.JumpReleased = false;
+            InputManager.instance.JumpPressed = false;
         }
-        if (InputManager.Instance.JumpReleased)
+        if (InputManager.instance.JumpReleased)
         {
             if (rig.linearVelocity.y > 0)
             {
                 rig.linearVelocity = new Vector2(rig.linearVelocity.x,rig.linearVelocity.y * jumpingCutMultiplier);
             }
-            InputManager.Instance.JumpReleased = false;
+            InputManager.instance.JumpReleased = false;
         }
     }
 }

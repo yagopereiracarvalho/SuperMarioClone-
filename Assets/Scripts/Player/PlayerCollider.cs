@@ -21,7 +21,7 @@ public class PlayerCollider : MonoBehaviour
     void CheckedCollision ()
     {
          bool isGrounded = Physics2D.OverlapCircle(groundCheck.position, radius, groundLayer);
-         InputManager.Instance.IsJumping = !isGrounded;
+         InputManager.instance.IsJumping = !isGrounded;
          Debug.DrawRay(groundCheck.position, Vector2.down * radius, Color.red);
     }
 }

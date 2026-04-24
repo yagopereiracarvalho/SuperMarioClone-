@@ -9,7 +9,7 @@ public class InputManager : MonoBehaviour
  [SerializeField] bool isJumping;
     Vector2 movementInput;
 
-    public static InputManager Instance;
+    public static InputManager instance;
     
     public bool JumpPressed { get => jumpPressed; set => jumpPressed = value;}
       public bool JumpReleased { get =>jumpReleased ; set =>  jumpReleased= value;}
@@ -17,7 +17,7 @@ public class InputManager : MonoBehaviour
 
     void  Awake() 
     {
-        Instance = this;   
+        instance = this;   
     }
     void OnMove(InputValue value)
     {
@@ -40,7 +40,7 @@ public class InputManager : MonoBehaviour
     
     public static Vector2 GetMovementInput()
     {
-        return Instance.movementInput;
+        return instance.movementInput;
     }
 
 }
