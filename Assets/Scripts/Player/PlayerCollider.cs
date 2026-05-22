@@ -24,4 +24,15 @@ public class PlayerCollider : MonoBehaviour
          InputManager.instance.IsJumping = !isGrounded;
          Debug.DrawRay(groundCheck.position, Vector2.down * radius, Color.red);
     }
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Mushroom"))
+        {
+            if (!GameController.instance.IsGrowUp)
+            {
+                 GameController.instance.GrowUp();
+            }
+                       Destroy(collision.gameObject);
+        }
+    }
 }
