@@ -34,5 +34,13 @@ public class PlayerCollider : MonoBehaviour
             }
                        Destroy(collision.gameObject);
         }
+        if (collision.CompareTag("Flower"))
+        {
+            if (!GameController.instance.IsFlower)
+            {
+                GameController.instance.Flower();
+            }
+            Destroy(collision.gameObject);
+        }
     }
 }

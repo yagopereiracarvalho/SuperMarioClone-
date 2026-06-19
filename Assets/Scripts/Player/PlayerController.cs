@@ -1,3 +1,4 @@
+using System.Data.Common;
 using Unity.VisualScripting;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
@@ -12,7 +13,11 @@ public class PlayerController : MonoBehaviour
     [Header("Pulo")]
     [SerializeField] float jumpForce = 13;
     [SerializeField] float jumpingCutMultiplier = 0.05f;
-
+    [SerializeField] Transform firePoint;
+    [SerializeField] GameObject fireball;
+    [SerializeField] float timeFire;
+    float Fireinterval;
+    float directionBall;
     Rigidbody2D rig;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -28,6 +33,14 @@ public class PlayerController : MonoBehaviour
             rig.gravityScale = 3;
         GetDirection();
         Jump();
+            if (GameController.instance.IsFlower)
+            {
+                Fire();
+            }
+            if(Fireinterval > 0)
+            {
+                Fireinterval -= Time.deltaTime;
+            }
         }
         else
         {
@@ -49,10 +62,12 @@ public class PlayerController : MonoBehaviour
 
         if(direction > 0)
         {
+            directionBall = 1;
             transform.eulerAngles = new Vector2(0, 0);
         }
         if(direction < 0)
         {
+            directionBall = -1;
             transform.eulerAngles = new Vector2(0, 180);
         }
     }
@@ -74,4 +89,16 @@ public class PlayerController : MonoBehaviour
             InputManager.instance.JumpReleased = false;
         }
     }
+
+    void Fire()
+    {
+        if (InputManager.instance.IsFire && Fireinterval <= 0 )
+        {
+            Fireinterval = timeFire;
+            InputManager.instance.IsFire = false; 
+           GameObject fire =  Instantiate(fireball,firePoint.position, firePoint.rotation);
+           fire.GetComponent<FireBall>().Direction = directionBall;
+        }
+    }
+  
 }
