@@ -9,7 +9,7 @@ public class Item : MonoBehaviour
     float posY;
     protected float direction;
     protected bool isStarted; 
-    BoxCollider2D boxCollider;
+    CapsuleCollider2D capsuleCollider;
     public float Direction {get => direction; set => direction = value;}
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -30,14 +30,14 @@ public class Item : MonoBehaviour
         }
         else
         {
-            boxCollider.enabled = true; 
+            capsuleCollider.enabled = true; 
             isStarted = true;
         }
     }
     protected void SetValues()
     {
         posY = transform.position.y + StartPos;
-        boxCollider = GetComponent<BoxCollider2D>();
-        boxCollider.enabled = false; 
+        capsuleCollider = GetComponent<CapsuleCollider2D>();
+        capsuleCollider.enabled = false; 
     }
 }

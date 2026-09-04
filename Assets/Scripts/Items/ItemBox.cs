@@ -47,6 +47,14 @@ public class ItemBox : MonoBehaviour
                     if (!GameController.instance.IsGrowUp)
                     {
                         GameObject item = Instantiate(items[0], transform.position, transform.rotation);
+                        if(transform.parent.position.x < collision.transform.position.x) 
+                        {
+                            item.GetComponent<Item>().Direction = -1;
+                        }
+                        else
+                        {
+                            item.GetComponent<Item>(). Direction = 1; 
+                        }
                     }
                     else
                     {

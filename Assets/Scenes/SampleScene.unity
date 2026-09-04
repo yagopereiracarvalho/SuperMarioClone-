@@ -7496,7 +7496,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_MaskInteraction: 0
   m_Sprite: {fileID: 1515622694917723629, guid: e634c34a94daa9d8993759e61001f0a5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -7543,7 +7543,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemBox
   isQuestionBox: 1
-  isContinuouItems: 1
+  isContinuouItems: 0
   isHitted: 0
   items:
   - {fileID: 3339449467481026993, guid: afa9a6fa398c84a838837bedba878536, type: 3}
@@ -78883,7 +78883,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_MaskInteraction: 0
   m_Sprite: {fileID: 1515622694917723629, guid: e634c34a94daa9d8993759e61001f0a5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -79224,7 +79224,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_MaskInteraction: 0
   m_Sprite: {fileID: 1515622694917723629, guid: e634c34a94daa9d8993759e61001f0a5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
