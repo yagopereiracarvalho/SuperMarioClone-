@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class ItemBox : MonoBehaviour
 {
@@ -40,21 +41,32 @@ public class ItemBox : MonoBehaviour
                 isHitted = true; 
                 if (items.Length == 1)
                 {
-                    GameObject item = Instantiate(items[0], transform.position, transform.rotation);
+                    GameObject item = Instantiate(items[0], transform.position, transform.rotation); 
+                    GetDirection(item.GetComponent< Item >(), collision.transform.parent);
+                    //  if(transform.parent.position.x < collision.transform.position.x) 
+                    //     {
+                    //         item.GetComponent<Item>().Direction = -1;
+                    //     }
+                    //     else
+                    //     {
+                    //         item.GetComponent<Item>(). Direction = 1; 
+                    //     }
                 }
                 else if(items.Length == 2)
                 {
                     if (!GameController.instance.IsGrowUp)
                     {
                         GameObject item = Instantiate(items[0], transform.position, transform.rotation);
-                        if(transform.parent.position.x < collision.transform.position.x) 
-                        {
-                            item.GetComponent<Item>().Direction = -1;
-                        }
-                        else
-                        {
-                            item.GetComponent<Item>(). Direction = 1; 
-                        }
+                        GetDirection(item.GetComponent< Item >(), collision.transform.parent);
+
+                        // if(transform.parent.position.x < collision.transform.position.x) 
+                        // {
+                        //     item.GetComponent<Item>().Direction = -1;
+                        // }
+                        // else
+                        // {
+                        //     item.GetComponent<Item>(). Direction = 1; 
+                        // }
                     }
                     else
                     {
@@ -69,5 +81,9 @@ public class ItemBox : MonoBehaviour
                 GameObject item = Instantiate(items [0], transform.position, transform.rotation);
             }
         }
+    }
+    void GetDirection(Item item, Transform player)
+    {
+        item.Direction = (transform.parent.position.x < player.position.x)? -1 : 1; 
     }
 }

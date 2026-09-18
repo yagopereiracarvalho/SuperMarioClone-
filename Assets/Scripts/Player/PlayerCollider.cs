@@ -50,5 +50,10 @@ public class PlayerCollider : MonoBehaviour
             headBigeMario.SetActive(true);
             Destroy(collision.gameObject);
         }
+        if (collision.CompareTag("Life"))
+        {
+            GameController.instance.GetLife();
+            Destroy(collision.gameObject);
+        }
     }
 }

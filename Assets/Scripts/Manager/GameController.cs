@@ -6,6 +6,7 @@ public class GameController : MonoBehaviour
 {
     [SerializeField] bool isPaused;
     [Header("player")]
+    [SerializeField] int lifes = 3;
     [SerializeField] PlayerAnim playerAnim;
     [SerializeField] float changeTIme;
     [SerializeField] bool isGrowUp;
@@ -39,6 +40,10 @@ public class GameController : MonoBehaviour
         }
         isGrowUp = true;
         isFlower = true; 
+    }
+    public void GetLife()
+    {
+        lifes++;
     }
     IEnumerator  ChangePlayer(int actualplayer,int nextPlayer)
     {
