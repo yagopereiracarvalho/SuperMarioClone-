@@ -7,6 +7,8 @@ TagManager:
   - Mushroom
   - Flower
   - PlayerHead
+  - Life
+  - Star
   layers:
   - Default
   - TransparentFX

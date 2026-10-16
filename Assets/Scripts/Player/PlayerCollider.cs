@@ -55,5 +55,10 @@ public class PlayerCollider : MonoBehaviour
             GameController.instance.GetLife();
             Destroy(collision.gameObject);
         }
+        if (collision.gameObject.tag  == "Star")
+        {
+            StartCoroutine(GameController.instance.StarMode());
+            Destroy(collision.gameObject); 
+        }
     }
 }
